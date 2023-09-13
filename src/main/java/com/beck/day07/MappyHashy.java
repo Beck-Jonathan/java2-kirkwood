@@ -11,6 +11,7 @@ public class MappyHashy {
 
   public static void main(String[] args) {
     population = new HashMap<>(); // new TreeMap<>();
+    //chnage this to treemap and the keys are sorted alphabetical
     //key as string, int as the value. Gotta add stuff as pairs.
     // use the put method to add stuff
     population.put("Des Moines", 214133);
@@ -18,8 +19,11 @@ public class MappyHashy {
     population.put("Davenport", 101724);
     population.put("Sioux City", 85791);
     population.put("Des Moines", 214134);
-    //printMap is dfunction we created below
+    //printMap is a function we created below
     printMap(population);
+    //
+    // change it to an entry set here. allows the faster looping
+     population.entrySet().forEach(System.out::println);
     System.out.println(population.remove("Sioux City"));
     System.out.println(population.containsKey("Sioux City"));
     System.out.println(population.containsKey("Cedar Rapids"));
@@ -47,19 +51,29 @@ public class MappyHashy {
     printMap(stateTrees);
 
     treeCount = new HashMap<>();
-    stateTrees.forEach((k, v) -> {
-      if (treeCount.containsKey(v)) {
-        treeCount.put(v, treeCount.get(v) + 1);
+    stateTrees.forEach((state, tree) -> {
+      if (treeCount.containsKey(tree)) {
+        treeCount.put(tree, treeCount.get(tree) + 1);
       } else {
-        treeCount.put(v, 1);
+        treeCount.put(tree, 1);
       }
     });
     printMap(treeCount);
-    population.forEach((key, value) -> System.out.println(key + "=" + value));
+   // population.forEach((key, value) -> System.out.println(key + "=" + value));
   }
 
   public static void printMap(Map<?, ?> map) {
     map.entrySet().forEach(System.out::println);
     System.out.println();
+    map.forEach((key, value) -> System.out.println(key + "\uD83C\uDFF4\u200D☠\uFE0F" + value)); //entry set with method reference
+
+    for (Map.Entry entry : map.entrySet()) {
+      System.out.println(entry.getKey() + "\uD83D\uDC80" + entry.getValue()); // method reference
+    }
+
+    for (var key : map.keySet()) {
+      System.out.println(key + "\uD83D\uDCA9" + map.get(key));  //keyset method
+    }
+
   }
 }

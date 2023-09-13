@@ -17,6 +17,7 @@ public class MoreCollections {
     myList4.add(new BankAccount(200));
     //shallow copy
     myList5 = new ArrayList<>(myList4);
+
     myList5.get(0).setBalance(101);
     printCollection(myList4, "vertical");
 

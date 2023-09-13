@@ -1,11 +1,9 @@
 package com.beck.partner_activities;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AnimalCount {
+  private static Map<String, Integer> counter;
   public static void main(String[] args) {
 
     Map<Person, List<Animal>> owners_and_their_pets = new HashMap<>();
@@ -30,9 +28,61 @@ public class AnimalCount {
     Person amy = new Person("Amy");
     List<Animal> amys_pets = new ArrayList<>();
     amys_pets.add(new Cat("Zipper"));
-    Person Jonathan = new Person("Jonathan");
-    List<Animal>  Jonathans_pets = new ArrayList<>();
 
     owners_and_their_pets.put(amy, amys_pets);
+    Person Jonathan = new Person("Jonathan");
+    List<Animal> Jonathans_pets = new ArrayList<>();
+    Jonathans_pets.add(new Rabbit("Gus"));
+    Jonathans_pets.add(new Cat("Bubbles"));
+    Jonathans_pets.add(new Fish("Speedy"));
+    Jonathans_pets.add(new Turtle("Shelly"));
+
+    owners_and_their_pets.put(Jonathan, Jonathans_pets);
+    Person caspian = new Person("Caspian");
+    List<Animal> caspians_pets = new ArrayList<>();
+    caspians_pets.add(new Cat("Tinkerbell"));
+    caspians_pets.add(new Cat("Fred"));
+    caspians_pets.add(new Cat("Macready"));
+    caspians_pets.add(new Dog("Mina"));
+    caspians_pets.add(new Fish("Captain_Hook"));
+    caspians_pets.add(new Mouse("Squire"));
+    caspians_pets.add(new Snake("Botwoon"));
+    owners_and_their_pets.put(caspian, caspians_pets);
+    printMap(owners_and_their_pets);
+    counter = new HashMap<String,Integer>();
+
+  
+
+
+  }
+
+  public static void printMap(Map<Person, List<Animal>> animalset) {
+
+    for (Map.Entry entry : animalset.entrySet()) {
+
+      System.out.print(entry.getKey()); // method reference
+      List<Animal> animals = animalset.get(entry.getKey());
+      Integer numberofpets = animals.size();
+      if (numberofpets==0){
+        System.out.print(" has no pets");
+      }
+      if (numberofpets==1){
+        System.out.print("\'s pet: ");
+      }
+      if (numberofpets>1){
+        System.out.print("\'s pets: ");
+      }
+      Iterator<Animal> it = animals.iterator();
+      while (it.hasNext()) {
+        numberofpets--;
+        Animal str = it.next();
+        if (numberofpets>0)
+        System.out.print(str.toString()+", ");
+        else {System.out.print(str.toString());}
+
+      }
+      System.out.println();
+
+    }
   }
 }

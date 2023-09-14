@@ -4,6 +4,7 @@ import java.util.*;
 
 public class AnimalCount {
   private static Map<String, Integer> counter;
+
   public static void main(String[] args) {
 
     Map<Person, List<Animal>> owners_and_their_pets = new HashMap<>();
@@ -49,12 +50,28 @@ public class AnimalCount {
     caspians_pets.add(new Snake("Botwoon"));
     owners_and_their_pets.put(caspian, caspians_pets);
     printMap(owners_and_their_pets);
-    counter = new HashMap<String,Integer>();
+    counter = new HashMap<String, Integer>();
+    owners_and_their_pets.forEach((person, Animal) -> {
+      Animal.forEach(animal -> {
+        if (counter.containsKey(animal.getClass().getSimpleName())) {
+          counter.put(animal.getClass().getSimpleName(), counter.get(animal.getClass().getSimpleName()) + 1);
+        } else {
+          counter.put(animal.getClass().getSimpleName(), 1);
+        }
+      });
 
-  
-
-
+    });
+    for (var key : counter.keySet()) {
+      if (counter.get(key)>1){
+        System.out.println("There are " + counter.get(key) +" "+ key+"s");
+      }
+      if (counter.get(key)==1){
+        System.out.println("There is " +counter.get(key) +" " + key);
+      }
+      //System.out.println(key + "\uD83D\uDCA9" + counter.get(key));  //keyset method
+    }
   }
+
 
   public static void printMap(Map<Person, List<Animal>> animalset) {
 
@@ -63,22 +80,24 @@ public class AnimalCount {
       System.out.print(entry.getKey()); // method reference
       List<Animal> animals = animalset.get(entry.getKey());
       Integer numberofpets = animals.size();
-      if (numberofpets==0){
+      if (numberofpets == 0) {
         System.out.print(" has no pets");
       }
-      if (numberofpets==1){
+      if (numberofpets == 1) {
         System.out.print("\'s pet: ");
       }
-      if (numberofpets>1){
+      if (numberofpets > 1) {
         System.out.print("\'s pets: ");
       }
       Iterator<Animal> it = animals.iterator();
       while (it.hasNext()) {
         numberofpets--;
         Animal str = it.next();
-        if (numberofpets>0)
-        System.out.print(str.toString()+", ");
-        else {System.out.print(str.toString());}
+        if (numberofpets > 0)
+          System.out.print(str.toString() + ", ");
+        else {
+          System.out.print(str.toString());
+        }
 
       }
       System.out.println();

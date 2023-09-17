@@ -3,7 +3,8 @@ package com.beck.partner_activities;
 import java.util.*;
 
 public class AnimalCount {
-  private static Map<String, Integer> counter;
+
+  private static Map<String, Integer> counter = new HashMap<String, Integer>();
 
   public static void main(String[] args) {
 
@@ -50,17 +51,17 @@ public class AnimalCount {
     caspians_pets.add(new Snake("Botwoon"));
     owners_and_their_pets.put(caspian, caspians_pets);
     printMap(owners_and_their_pets);
-    counter = new HashMap<String, Integer>();
-    owners_and_their_pets.forEach((person, Animal) -> {
-      Animal.forEach(animal -> {
-        if (counter.containsKey(animal.getClass().getSimpleName())) {
-          counter.put(animal.getClass().getSimpleName(), counter.get(animal.getClass().getSimpleName()) + 1);
-        } else {
-          counter.put(animal.getClass().getSimpleName(), 1);
-        }
-      });
 
-    });
+    owners_and_their_pets.forEach((peep, list) -> list.forEach(animal -> {
+      var x = animal.getClass().getSimpleName();
+      if(counter.containsKey(x)) {
+        counter.put(x, counter.get(x) + 1);
+      }
+      else {
+        counter.put(x, 1);
+      }
+    }));
+    counter.entrySet().forEach(System.out::println);
     for (var key : counter.keySet()) {
       if (counter.get(key)>1){
         System.out.println("There are " + counter.get(key) +" "+ key+"s");

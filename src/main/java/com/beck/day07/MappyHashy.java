@@ -10,6 +10,9 @@ public class MappyHashy {
   private static Map<String, Integer> treeCount;
 
   public static void main(String[] args) {
+    Map<String, Character> grades = new HashMap<>();
+    grades.put("x",'a');
+
     population = new HashMap<>(); // new TreeMap<>();
     //chnage this to treemap and the keys are sorted alphabetical
     //key as string, int as the value. Gotta add stuff as pairs.

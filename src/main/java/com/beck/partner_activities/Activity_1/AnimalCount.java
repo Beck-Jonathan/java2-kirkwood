@@ -1,4 +1,4 @@
-package com.beck.partner_activities;
+package com.beck.partner_activities.Activity_1;
 
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class AnimalCount {
         counter.put(x, 1);
       }
     }));
-    counter.entrySet().forEach(System.out::println);
+    //counter.entrySet().forEach(System.out::println);
     for (var key : counter.keySet()) {
       if (counter.get(key)>1){
         System.out.println("There are " + counter.get(key) +" "+ key+"s");

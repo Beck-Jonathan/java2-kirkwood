@@ -1,7 +1,5 @@
 package com.beck.codebat1;
 
-import com.beck.partner_activities.Animal;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.*;

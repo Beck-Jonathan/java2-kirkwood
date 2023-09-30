@@ -1,9 +1,9 @@
-package com.beck.partner_activities;
+package com.beck.partner_activities.Activity_1;
 
-public  class Person {
-  String name;
+public abstract class Animal {
+  protected String name;
 
-  public Person(String name) {
+  public Animal(String name) {
     this.name = name;
   }
 
@@ -14,8 +14,6 @@ public  class Person {
   public void setName(String name) {
     this.name = name;
   }
-
-  @Override
   public String toString() {
     return this.name;
   }

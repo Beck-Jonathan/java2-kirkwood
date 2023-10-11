@@ -1,8 +1,6 @@
-package com.beck.day06;
+package com.beck.demos.day06;
 
 import java.util.*;
-
-import static com.beck.day06.Collections_demo.printCollection;
 
 public class MoreCollections {
   private static List<BankAccount> myList4;
@@ -19,7 +17,7 @@ public class MoreCollections {
     myList5 = new ArrayList<>(myList4);
 
     myList5.get(0).setBalance(101);
-    printCollection(myList4, "vertical");
+    Collections_demo.printCollection(myList4, "vertical");
 
     //deep copy
     List<BankAccount> myList6 = new ArrayList<>(myList5.size());

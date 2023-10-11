@@ -1,4 +1,4 @@
-package com.beck.quiz;
+package com.beck.demos.quiz;
 
 import java.util.*;
 

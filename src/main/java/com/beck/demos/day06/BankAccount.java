@@ -1,4 +1,4 @@
-package com.beck.day06;
+package com.beck.demos.day06;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;

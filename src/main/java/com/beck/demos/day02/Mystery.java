@@ -1,4 +1,4 @@
-package com.beck.day02;
+package com.beck.demos.day02;
 
 public class Mystery {
   private static int count = 0;

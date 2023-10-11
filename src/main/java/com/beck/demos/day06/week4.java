@@ -1,4 +1,4 @@
-package com.beck.day06;
+package com.beck.demos.day06;
 
 import java.util.ArrayList;
 import java.util.List;

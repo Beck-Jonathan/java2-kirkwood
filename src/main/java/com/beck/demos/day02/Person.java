@@ -1,4 +1,4 @@
-package com.beck.day02;
+package com.beck.demos.day02;
 
 //Consider the following Person class.
 public class Person  {

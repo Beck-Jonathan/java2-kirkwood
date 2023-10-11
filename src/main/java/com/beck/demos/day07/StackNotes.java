@@ -1,4 +1,4 @@
-package com.beck.day07;
+package com.beck.demos.day07;
 
 import java.util.Stack;
 

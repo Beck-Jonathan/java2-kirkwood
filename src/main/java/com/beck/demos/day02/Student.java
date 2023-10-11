@@ -1,4 +1,4 @@
-package com.beck.day02;
+package com.beck.demos.day02;
 
 public class Student extends Person{
   private Double gpa;

@@ -1,4 +1,4 @@
-package com.beck.day02;
+package com.beck.demos.day02;
 // Assume a class BankAccount exists with an instance variable called "balance" (a double).
 //        Write a toString method that could print "Your balance on May X, 20XX is $1,234.56". Substitute "May X, 20XX" with today's date. Substitute "1,234.56" with the balance.
 //        You must apply date and number formatting to earn full credit.

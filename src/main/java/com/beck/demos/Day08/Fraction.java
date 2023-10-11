@@ -58,6 +58,16 @@ public class Fraction {
     int gcd = Integer.parseInt(i.toString());
     return gcd;
   }
+  public Fraction simplify() {
+    int gcd = greatestCommonDivisor(this.numerator, this.denominator);
+    Fraction simplifiedFraction = new Fraction(this.numerator / gcd, this.denominator / gcd);
+    if(simplifiedFraction.numerator >= 0 && simplifiedFraction.denominator < 0
+        || simplifiedFraction.numerator < 0 && simplifiedFraction.denominator < 0) {
+      simplifiedFraction.numerator *= -1;
+      simplifiedFraction.denominator *= -1;
+    }
+    return simplifiedFraction;
+  }
 
 }
 

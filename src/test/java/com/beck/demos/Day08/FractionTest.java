@@ -88,5 +88,42 @@ class FractionTest {
 
   }
 
+  @Test
+  public void testSimplify(){
+    //This is JOnathans work
+    Fraction F1  = new Fraction(2, 4);
+    Fraction F2 = new Fraction(-2, 4);
+    Fraction F3= new Fraction 	(-2, -4);
+    Fraction S1 = F1.simplify();
+    Fraction S2 = F2.simplify();
+    Fraction S3 = F3.simplify();
+    assertEquals(S1.toString(),"1/2");
+    assertTrue(S2.toString().equals("-1/2"));
+    assertEquals(S3.getNumerator(),1);
+    assertTrue(S3.getDenominator()==2);
+
+    //this is Isabella's work
+
+    Fraction fraction1 = new Fraction(75, 45);
+    String expected1 = "5/3";
+    String actual1 = fraction1.simplify().toString();
+    assertEquals(expected1, actual1);
+
+    Fraction fraction2 = new Fraction(5, 7);
+    String expected2 = "5/7";
+    String actual2 = fraction2.simplify().toString();
+    assertTrue(expected2.equals(actual2));
+
+    Fraction fraction3 = new Fraction(2, -4);
+    int expectedNumerator = -1;
+    int expectedDenominator = 2;
+    int actualNumerator = fraction3.simplify().getNumerator();
+    int actualDenominator = fraction3.simplify().getDenominator();
+    assertEquals(expectedNumerator, actualNumerator);
+    assertTrue(expectedDenominator == actualDenominator);
+
+
+  }
+
 
 }

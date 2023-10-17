@@ -44,6 +44,7 @@ class FractionTest {
     f.setNumerator(4);
     int acutal = f.getNumerator();
     assertEquals(expected,acutal);
+    
 
 
 
@@ -57,6 +58,7 @@ class FractionTest {
     int acutal = f.getDenominator();
     assertEquals(expected,acutal);
     assertThrows(IllegalArgumentException.class,()->f.setDenominator(0));
+    //contains exception and lamda expresson. the lamda expresions is ()-> f.setDenominator(0)
     assertThrowsExactly(IllegalArgumentException.class,()->f.setDenominator(0));
 
 

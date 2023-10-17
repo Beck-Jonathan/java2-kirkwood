@@ -88,6 +88,36 @@ public class Fraction {
     return f;
   }
 
+  public  String  mixedNumber(){
+    String xx=" ";
+    Fraction g = this.simplify();
+    Integer x = g.getDenominator();
+    Integer y = g.getNumerator();
+    if (x==0){return  y.toString();}
+    else if (y==0){return "0";}
+    else if (x==y){return "1";}
+    else if (y>x){
+      Integer whole = y/x;
+      Integer remainder = y%x;
+      if (remainder == 0) {
+        return whole.toString();
+      }
+      String result = whole.toString()+" "+remainder.toString()+ "/" + x.toString();
+      return result;}
+    else if(y<0&& Math.abs(y)>Math.abs(x)){
+      Integer whole = y/x;
+      Integer remainder = -y%x;
+      String result = whole.toString()+" "+remainder.toString()+ "/" + x.toString();
+      return result;}
+    else {return g.toString();}
+
+
+
+
+
+
+  }
+
 
 }
 

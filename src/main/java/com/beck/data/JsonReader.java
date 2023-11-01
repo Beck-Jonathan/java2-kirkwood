@@ -37,9 +37,9 @@ public class JsonReader {
     JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&noinfo");
     ObjectMapper mapper = new ObjectMapper();
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    Map<String,Object> map = mapper.readValue(json.toString(), Map.class);
-    map.entrySet().forEach(System.out::println);
-//        UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
-//        userFromJson.getUsers().forEach(System.out::println);
+    //Map<String,Object> map = mapper.readValue(json.toString(), Map.class);
+    //map.entrySet().forEach(System.out::println);
+        UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
+        userFromJson.getUsers().forEach(System.out::println);
   }
 }

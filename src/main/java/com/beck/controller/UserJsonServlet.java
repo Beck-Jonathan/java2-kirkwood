@@ -22,6 +22,7 @@ public class UserJsonServlet extends HttpServlet {
   private static List<User> users;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //users.forEach(System.out::println);
     String query = req.getParameter("q");
     String sort = req.getParameter("sort");
     String sort2 = sort !=null ? sort:"";
@@ -59,7 +60,7 @@ public class UserJsonServlet extends HttpServlet {
       ObjectMapper mapper = new ObjectMapper();
       mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
       UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
-//            userFromJson.getUsers().forEach(System.out::println);
+      userFromJson.getUsers().forEach(System.out::println);
       users = userFromJson.getUsers();
     } catch(IOException e) {
       // TODO: Forward data error to jsp

@@ -1,4 +1,4 @@
-package com.beck.demos.Week10;
+package com.beck.data;
 
 import java.io.*;
 import java.net.URL;
@@ -33,13 +33,11 @@ public class JsonReader {
   }
 
   public static void main(String[] args) throws IOException, JSONException {
-    JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&inc=gender,name,email,phone,cell,nat&noinfo");
-    //System.out.println(json.toString());
+    JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&noinfo");
     ObjectMapper mapper = new ObjectMapper();
-    Map<String,Object> personMap = mapper.readValue(json.toString(), Map.class);
-    personMap.entrySet().forEach(System.out::println);
-    //System.out.println(json.get("id"));
-    UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
-    userFromJson.getUsers().forEach(System.out::println);
+    Map<String,Object> map = mapper.readValue(json.toString(), Map.class);
+    map.entrySet().forEach(System.out::println);
+//        UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
+//        userFromJson.getUsers().forEach(System.out::println);
   }
 }

@@ -1,4 +1,4 @@
-package com.hauschildt.controller;
+package com.beck.controller;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name="userJsonServlet", value="/user-json")
@@ -20,18 +21,33 @@ public class UserJsonServlet extends HttpServlet {
   private static List<User> users;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    req.setAttribute("users", users);
-    req.getRequestDispatcher("WEB-INF/demo/user-json.jsp").forward(req,resp);
+    String query = req.getParameter("q");
+    if(query == null) {
+      query = "";
+    }
+    String query2 = query;
+    List<User> deepCopy = new ArrayList<>();
+    for(User user: users) {
+      try {
+        deepCopy.add((User)user.clone());
+      } catch (CloneNotSupportedException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    deepCopy.removeIf(user -> !user.getName().fullName().contains(query2));
+    req.setAttribute("users", deepCopy);
+    req.getRequestDispatcher("WEB-INF/demo/user-json.jsp").forward(req, resp);
   }
 
   @Override
   public void init() throws ServletException {
     try {
-      JSONObject json = JsonReader.readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&inc=name,location,gender,email,phone,cell,nat&noinfo");
+      JSONObject json = JsonReader.readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&noinfo");
       ObjectMapper mapper = new ObjectMapper();
       mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
       UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
-      userFromJson.getUsers().forEach(System.out::println);
+//            userFromJson.getUsers().forEach(System.out::println);
+      users = userFromJson.getUsers();
     } catch(IOException e) {
       // TODO: Forward data error to jsp
     }

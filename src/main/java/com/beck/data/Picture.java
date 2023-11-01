@@ -28,4 +28,8 @@ public class Picture{
         "\n\t\tthumbnail='" + thumbnail + '\'' +
         "\n\t}";
   }
+
+  public String getThumbnail() {
+    return thumbnail;
+  }
 }

@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name="userJsonServlet", value="/user-json")
@@ -22,6 +23,8 @@ public class UserJsonServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String query = req.getParameter("q");
+    String sort = req.getParameter("sort");
+    String sort2 = sort !=null ? sort:"";
     if(query == null) {
       query = "";
     }
@@ -34,7 +37,17 @@ public class UserJsonServlet extends HttpServlet {
         throw new RuntimeException(e);
       }
     }
-    deepCopy.removeIf(user -> !user.getName().fullName().contains(query2));
+    deepCopy.removeIf(user -> !user.getName().fullName().toLowerCase().contains(query2.toLowerCase()));
+
+    if (!sort.equals("")){
+    if (sort.equals("az")) {
+      Collections.sort(deepCopy);
+    }else {
+      deepCopy.sort((a, b) -> b.compareTo(a));
+    }
+
+
+    }
     req.setAttribute("users", deepCopy);
     req.getRequestDispatcher("WEB-INF/demo/user-json.jsp").forward(req, resp);
   }

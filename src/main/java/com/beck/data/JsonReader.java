@@ -33,6 +33,8 @@ public class JsonReader {
     }
   }
 
+
+
   public static void main(String[] args) throws IOException, JSONException {
     JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=10&nat=us&noinfo");
     ObjectMapper mapper = new ObjectMapper();

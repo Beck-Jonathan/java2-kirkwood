@@ -13,7 +13,7 @@ public class Team implements Cloneable, Serializable, Comparable <Team>{
   private String League;
 
   @JsonProperty("strStadium")
-  private String Statium;
+  private String Stadium;
 
 
   @JsonProperty("strStadiumLocation")
@@ -33,7 +33,7 @@ public class Team implements Cloneable, Serializable, Comparable <Team>{
     return "Team{" +
         "\n\tTeam='" + Team + '\'' +
         ",\n\t League='" + League + '\'' +
-        ",\n\t Statium='" + Statium + '\'' +
+        ",\n\t Stadium='" + Stadium + '\'' +
         ", \n\tStadiumLocation='" + StadiumLocation + '\'' +
         ", \n\tStadiumCapacity=" + StadiumCapacity +
         "\n }";
@@ -47,8 +47,8 @@ public class Team implements Cloneable, Serializable, Comparable <Team>{
     return League;
   }
 
-  public String getStatium() {
-    return Statium;
+  public String getStadium() {
+    return Stadium;
   }
 
   public String getStadiumLocation() {

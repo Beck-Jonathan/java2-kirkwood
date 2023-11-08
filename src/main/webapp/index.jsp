@@ -8,6 +8,9 @@
 <h1><%= "Hello Classroom!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="calculator">Calculator</a>
+<a href='user-json'>User</a>
+<a href="convert-money">Financial</a>
+<a href="convert-temps">Temps</a>
 </body>
 </html>

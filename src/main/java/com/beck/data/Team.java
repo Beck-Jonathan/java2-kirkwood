@@ -7,55 +7,58 @@ import java.io.Serializable;
 public class Team implements Cloneable, Serializable, Comparable <Team>{
 
   @JsonProperty("strTeam")
-  private String Team;
+  private String strTeam;
 
   @JsonProperty("strLeague")
-  private String League;
+  private String strLeague;
 
   @JsonProperty("strStadium")
-  private String Stadium;
+  private String strStadium;
 
 
   @JsonProperty("strStadiumLocation")
-  private String StadiumLocation;
+  private String strStadiumLocation;
 
   @JsonProperty("strStadiumCapacity")
-  private int StadiumCapacity;
+  private int strStadiumCapacity;
 
 
-  @Override
-  public int compareTo(Team o) {
-    return 0;
-  }
+
 
   @Override
   public String toString() {
     return "Team{" +
-        "\n\tTeam='" + Team + '\'' +
-        ",\n\t League='" + League + '\'' +
-        ",\n\t Stadium='" + Stadium + '\'' +
-        ", \n\tStadiumLocation='" + StadiumLocation + '\'' +
-        ", \n\tStadiumCapacity=" + StadiumCapacity +
+        "\n\tTeamx='" + strTeam + '\'' +
+        ",\n\t League='" + strLeague + '\'' +
+        ",\n\t Stadium='" + strStadium + '\'' +
+        ", \n\tStadiumLocation='" + strStadiumLocation + '\'' +
+        ", \n\tStadiumCapacity=" + strStadiumCapacity +
         "\n }";
   }
 
-  public String getTeam() {
-    return Team;
+  public String getstrTeam() {
+    return strTeam;
   }
 
-  public String getLeague() {
-    return League;
+  public String getstrLeague() {
+    return strLeague;
   }
 
-  public String getStadium() {
-    return Stadium;
+  public String getstrStadium() {
+    return strStadium;
   }
 
-  public String getStadiumLocation() {
-    return StadiumLocation;
+  public String getstrStadiumLocation() {
+    return strStadiumLocation;
   }
 
-  public int getStadiumCapacity() {
-    return StadiumCapacity;
+  public int getstrStadiumCapacity() {
+    return strStadiumCapacity;
+  }
+
+  public int compareTo(Team o) {
+    int result = this.getstrTeam().compareTo(o.getstrTeam());
+
+    return result;
   }
 }

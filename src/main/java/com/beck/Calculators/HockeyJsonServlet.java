@@ -1,4 +1,4 @@
-package com.beck.controller;
+package com.beck.Calculators;
 
 import com.beck.data.*;
 import com.beck.data.Team;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@WebServlet(name="userJsonServlet", value="/hockey-json")
+@WebServlet(name="HockeyJSONServlet", value="/hockey-json")
 public class HockeyJsonServlet extends HttpServlet {
   private static List<Team> teams = new ArrayList<>();
   private static List<String> leagues = new ArrayList<>();
@@ -24,13 +24,13 @@ public class HockeyJsonServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String q = req.getParameter("q");
     String s = req.getParameter("sort");
-    String league = req.getParameter("state");
+    String league = req.getParameter("league");
     req.setAttribute("q", q);
     req.setAttribute("s", s);
     req.setAttribute("league", league);
     String query = q != null ? q : "";
     String sort = s != null ? s : "";
-    String state2 = league != null ? league : "";
+    String league2 = league != null ? league : "";
     List<Team> copy = new ArrayList<>(teams);
 //        for(User user: users) {
 //            try {
@@ -40,10 +40,10 @@ public class HockeyJsonServlet extends HttpServlet {
 //            }
 //        }
     if(!query.equals("")) {
-      copy.removeIf(team -> !team.getTeam().contains(query.toLowerCase()));
+      copy.removeIf(team -> !team.getstrTeam().toLowerCase().contains(query.toLowerCase()));
     }
-    if(!state2.equals("")) {
-      copy.removeIf(user -> !user.getStadium().equals(state2));
+    if(!league2.equals("")) {
+      copy.removeIf(team -> !team.getstrLeague().equals(league2));
     }
     if(!sort.equals("")) {
       if(sort.equals("az")) {
@@ -52,8 +52,8 @@ public class HockeyJsonServlet extends HttpServlet {
         copy.sort((a, b) -> b.compareTo(a));
       }
     }
-    req.setAttribute("teams", teams);
-    req.setAttribute("states", league);
+    req.setAttribute("teams", copy);
+    req.setAttribute("leagues", leagues);
     req.getRequestDispatcher("WEB-INF/demo/hockey-team-json.jsp").forward(req, resp);
   }
 
@@ -69,7 +69,7 @@ public class HockeyJsonServlet extends HttpServlet {
 
       for(Team team: teams) {
 
-        String league = team.getLeague();
+        String league = team.getstrLeague();
         if(!leagues.contains(league)) {
           leagues.add(league);
         }

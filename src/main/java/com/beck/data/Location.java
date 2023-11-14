@@ -33,6 +33,10 @@ public String toString() {
     "\n\t}";
     }
 
+    public int textx(){
+    return 3;
+    }
+
 public Street getStreet() {
     return street;
     }

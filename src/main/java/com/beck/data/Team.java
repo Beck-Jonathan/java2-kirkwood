@@ -22,8 +22,13 @@ public class Team implements Cloneable, Serializable, Comparable <Team>{
   @JsonProperty("strStadiumCapacity")
   private int strStadiumCapacity;
 
-
-
+  public Team(String strTeam, String strLeague, String strStadium, String strStadiumLocation, int strStadiumCapacity) {
+    this.strTeam = strTeam;
+    this.strLeague = strLeague;
+    this.strStadium = strStadium;
+    this.strStadiumLocation = strStadiumLocation;
+    this.strStadiumCapacity = strStadiumCapacity;
+  }
 
   @Override
   public String toString() {

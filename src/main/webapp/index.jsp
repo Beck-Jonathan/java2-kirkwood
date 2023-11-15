@@ -10,9 +10,13 @@
 <br/>
 <a href="calculator">Calculator</a> <br/>
 <a href='user-json'>User</a> <br/>
+<a href='users-db'>Userv from db</a> <br/>
 <a href="convert-money">Financial</a> <br/>
 <a href="convert-temps">Temps</a><br/>
 <a href="hockey-json">Hockey Team From JSON</a><br/>
+<a href="hockey-team-db">Hockey Team From datebase</a><br/>
+
+
 
 
 

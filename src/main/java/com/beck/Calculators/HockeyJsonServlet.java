@@ -1,5 +1,7 @@
 package com.beck.Calculators;
 
+import com.beck.DataAccess.TeamDAO;
+
 import com.beck.data.*;
 import com.beck.data.Team;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -64,8 +66,10 @@ public class HockeyJsonServlet extends HttpServlet {
       ObjectMapper mapper = new ObjectMapper();
       mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
       TeamFromJson teamFromJson = mapper.readValue(json.toString(), TeamFromJson.class);
-//            userFromJson.getUsers().forEach(System.out::println);
+//
       teams = teamFromJson.getTeams();
+      teams = TeamDAO.getAll();
+
 
       for(Team team: teams) {
 

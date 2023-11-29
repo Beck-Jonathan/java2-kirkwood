@@ -1,5 +1,7 @@
 package com.beck.controller;
 
+import com.beck.DataAccess.UserDAO;
+import com.beck.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,11 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-@WebServlet(name = "signup_sheet", value = "/signup")
 
-public class CreateUserServlet  extends HttpServlet {
+@WebServlet(name="createUserServlet", value="/signup")
+public class CreateUserServlet extends HttpServlet {
 
+  private static Map<String, String> results = new HashMap<>();
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.getRequestDispatcher("WEB-INF/demo/create-user.jsp").forward(req, resp);
@@ -19,6 +24,53 @@ public class CreateUserServlet  extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    super.doPost(req, resp);
+    String email = req.getParameter("inputEmail1");
+    String password1 = req.getParameter("inputPassword1");
+    String password2 = req.getParameter("inputPassword2");
+    String[] termsOfService = req.getParameterValues("termsOfService");
+
+    results.clear();
+    results.put("email", email);
+    results.put("password1", password1);
+    results.put("password2", password2);
+    if(termsOfService != null && termsOfService[0].equals("agree")) {
+      results.put("termsOfService", termsOfService[0]);
+    } else {
+      results.put("termsOfService", "");
+      results.put("termsOfServiceError", "You must agree to our terms of service");
+    }
+
+
+    User user = new User();
+    try {
+      user.setEmail(email);
+    } catch(IllegalArgumentException e) {
+      results.put("emailError", e.getMessage());
+    }
+
+    try {
+      user.setPassword(password1.toCharArray());
+    } catch(IllegalArgumentException e) {
+      results.put("password1Error", e.getMessage());
+    }
+
+    if(!password1.equals(password2)) {
+      results.put("password2Error", "Passwords don't match");
+    }
+    if (!results.containsKey("emailError") && !results.containsKey("password1Error")
+        && !results.containsKey("password2Error") && !results.containsKey("termsOfServiceError")
+    ) {
+      try {
+        UserDAO.add(user);
+        results.put("userAddSuccess", "User added");
+      } catch (RuntimeException e) {
+        results.put("userAddFail", "User not added");
+      }
+    }
+
+
+
+    req.setAttribute("results", results);
+    req.getRequestDispatcher("WEB-INF/demo/create-user.jsp").forward(req, resp);
   }
 }

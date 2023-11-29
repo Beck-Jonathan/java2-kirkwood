@@ -110,6 +110,17 @@ public class User {
     return status;
   }
 
+  public void setStatus(String status){
+    if (status.equals("inactive") || status.equals("active") || status.equals("locked") ){
+      this.status=status;
+
+    }
+    else {throw new IllegalArgumentException();}
+
+
+
+  }
+
   public String getPrivileges() {
     return privileges;
   }

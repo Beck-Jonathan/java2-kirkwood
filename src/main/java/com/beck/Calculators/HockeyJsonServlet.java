@@ -68,7 +68,7 @@ public class HockeyJsonServlet extends HttpServlet {
       TeamFromJson teamFromJson = mapper.readValue(json.toString(), TeamFromJson.class);
 //
       teams = teamFromJson.getTeams();
-      teams = TeamDAO.getAll();
+      //teams = TeamDAO.getAll();
 
 
       for(Team team: teams) {

@@ -53,4 +53,15 @@ public class UserDAO extends DBConnection{
     }
     return list;
   }
+  public static int addUser(String email, String password) throws SQLException {
+    int result=0;
+    try (Connection connection = getConnection()) { //connection came from driver manager
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_add_user()}")) {
+
+        }
+      }
+    }
+        return result;
+  }
 }

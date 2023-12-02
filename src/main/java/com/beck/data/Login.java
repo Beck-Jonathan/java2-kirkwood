@@ -2,7 +2,7 @@ package com.beck.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class login {
+public class Login {
   @JsonProperty("uuid")
   private String uuid ;
 

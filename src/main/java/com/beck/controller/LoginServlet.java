@@ -61,6 +61,7 @@ public class LoginServlet extends HttpServlet {
             results.put("loginFail", "Account locked, you must reset your password to continue");
           }
         } else {
+          results.clear();
           results.put("loginSuccess", "Welcome back " + userFromDatabase.getEmail());
           invalidAttempts = 0;
         }

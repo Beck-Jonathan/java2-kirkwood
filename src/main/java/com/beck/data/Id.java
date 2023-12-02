@@ -2,7 +2,7 @@ package com.beck.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class id {
+public class Id {
   @JsonProperty("name")
   private String name;
   @JsonProperty("value")

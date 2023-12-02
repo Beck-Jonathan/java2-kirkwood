@@ -23,16 +23,16 @@ public class User implements Cloneable, Serializable, Comparable <User>{
   private Picture picture;
 
   @JsonProperty("registered")
-  private registered registered;
+  private Registered registered;
 
   @JsonProperty("id")
-  private id id;
+  private Id id;
 
   @JsonProperty("login")
-  private login login;
+  private Login login;
 
   @JsonProperty("dob")
-  private dob dob;
+  private Dob dob;
 
 
 
@@ -83,19 +83,19 @@ public class User implements Cloneable, Serializable, Comparable <User>{
     return result;
   }
 
-  public com.beck.data.registered getRegistered() {
+  public Registered getRegistered() {
     return registered;
   }
 
-  public com.beck.data.id getId() {
+  public Id getId() {
     return id;
   }
 
-  public com.beck.data.login getLogin() {
+  public Login getLogin() {
     return login;
   }
 
-  public com.beck.data.dob getDob() {
+  public Dob getDob() {
     return dob;
   }
 

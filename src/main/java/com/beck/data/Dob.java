@@ -2,25 +2,25 @@ package com.beck.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class registered {
+public class Dob {
   @JsonProperty("date")
   private String date;
   @JsonProperty("age")
-  private String age;
+  private int age;
 
   public String getDate() {
     return date;
   }
 
-  public String getAge() {
+  public int getAge() {
     return age;
   }
 
   @Override
   public String toString() {
-    return "registered{" +
+    return "dob{" +
         "\n\tdate='" + date + '\'' +
-        ",\n\t age='" + age + '\'' +
+        ",\n\t age=" + age +
         '}';
   }
 }

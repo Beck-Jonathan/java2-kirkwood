@@ -32,6 +32,16 @@ public class JsonReader {
       is.close();
     }
   }
+  //basic json object
+  // {"firstname":"marc",
+  // "pets"{
+  // {
+  // "name":"zipper",
+    //"species":"dog"}
+  // }
+  // {"name":"zipper2",
+      //"species":"rabbit"
+  // }}
 
 
 

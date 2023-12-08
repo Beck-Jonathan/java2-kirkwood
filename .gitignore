@@ -19,7 +19,7 @@ replay_pid*
 mvnw.cmd
 mvnw
 .mvn/wrapper
-/webapp/
+
 ##############################
 ## Maven
 ##############################

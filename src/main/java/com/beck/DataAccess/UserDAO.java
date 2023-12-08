@@ -90,6 +90,7 @@ public class UserDAO extends DBConnection{
           statement.setString(7,user.getLanguage());
           statement.setString(8, user.getStatus());
           statement.setString(9,user.getPrivileges());
+
           int numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not update user. Try again later");

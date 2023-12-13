@@ -87,6 +87,22 @@
                 <th scope="col">Location</th>
             </tr>
             </thead>
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Password</th>
+                <th scope="col">Language</th>
+                <th scope="col">Status</th>
+                <th scope="col">Privileges</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Last Logged In</th>
+                <th scope="col">Updated At</th>
+            </tr>
+            </thead>
             <tbody>
             <c:forEach items="${users}" var="user" varStatus="status">
                 <tr>

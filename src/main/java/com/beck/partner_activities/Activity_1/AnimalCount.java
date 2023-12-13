@@ -5,10 +5,12 @@ import java.util.*;
 public class AnimalCount {
 
   private static Map<String, Integer> counter = new HashMap<String, Integer>();
+  private static   Map<Integer,Integer> metaCount = new HashMap<>();
 
   public static void main(String[] args) {
 
     Map<Person, List<Animal>> owners_and_their_pets = new HashMap<>();
+
 
     Person marc = new Person("Marc");
     List<Animal> marcs_pets = new ArrayList<>();
@@ -71,6 +73,27 @@ public class AnimalCount {
       }
       //System.out.println(key + "\uD83D\uDCA9" + counter.get(key));  //keyset method
     }
+    System.out.println("Results for test question");
+    String people = " Person Has ";
+    for (var key : metaCount.keySet()) {
+      if (metaCount.get(key)!=1){
+        people = " People Have ";
+
+      }
+      else{
+        people = " Person Has ";
+      }
+      if (key==0){
+        System.out.println(metaCount.get(key)+people+ " 0 pets");
+      }
+      if (key==1){
+        System.out.println(metaCount.get(key)+people+key+" pet");
+      }
+      if (key>1){
+        System.out.println(metaCount.get(key)+people+key+" pets");
+      }
+      //System.out.println(key + "\uD83D\uDCA9" + counter.get(key));  //keyset method
+    }
   }
 
 
@@ -83,12 +106,26 @@ public class AnimalCount {
       Integer numberofpets = animals.size();
       if (numberofpets == 0) {
         System.out.print(" has no pets");
+        if (metaCount.containsKey("0")) {
+        metaCount.put(0,metaCount.get("0")+1);
+        }
+        else {metaCount.put(0,1);}
+
       }
       if (numberofpets == 1) {
         System.out.print("\'s pet: ");
+        if (metaCount.containsKey("1")) {
+          metaCount.put(1,metaCount.get("1")+1);
+        }
+        else {metaCount.put(0,1);}
       }
       if (numberofpets > 1) {
         System.out.print("\'s pets: ");
+        if (metaCount.containsKey(numberofpets)) {
+          metaCount.put(2,metaCount.get(numberofpets+1));
+        }
+        else {metaCount.put(numberofpets,1);}
+
       }
       Iterator<Animal> it = animals.iterator();
       while (it.hasNext()) {

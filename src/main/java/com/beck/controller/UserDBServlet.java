@@ -17,6 +17,7 @@ public class UserDBServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.setAttribute("users",users);
+    String x = req.getParameter("hi");
     req.getRequestDispatcher("WEB-INF/demo/users-db.jsp").forward(req, resp);
   }
 

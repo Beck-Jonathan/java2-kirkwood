@@ -4,10 +4,13 @@ import java.util.*;
 
 public class main {
   public static void main(String[] args) {
+
+
     Map<String, Integer> groceryList = new HashMap<>();
     groceryList.put("milk", 1);
     groceryList.put("bread", 2);
     groceryList.put("eggs", 1);
+    groceryList.entrySet().forEach(System.out::println );
 
     System.out.println("A");
     for (String key : groceryList.keySet()) {
